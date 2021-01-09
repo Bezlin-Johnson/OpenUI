@@ -45,6 +45,8 @@ def createdatabase():
     Frame(window, width=150, height=4, bg="#6C63FF").place(x=5, y=691)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=5, y=655)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=151, y=655)
+    Label(window, text="Provide a name for your table.",
+          bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
 
 
 def previewdatabase():
