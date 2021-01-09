@@ -41,6 +41,11 @@ def createdatabase():
 
     def nextbtnhoveroff(event):
         nextbtn.configure(fg="#6C63FF")
+
+    def nextdone():
+        name = str(tablename.get())
+        print(name.len)
+        # print(variable.get(), tablename.get())
     Label(window, image=img5).place(x=-2, y=-1)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
@@ -56,7 +61,8 @@ def createdatabase():
     Label(window, text="",
           bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
     tablename = tk.Entry(window, justify='center', bd=3, fg="black",
-                         font=("Helvetica", 30, "bold")).pack()
+                         font=("Helvetica", 30, "bold"))
+    tablename.pack()
     Frame(window, width=350, height=4, bg="white").place(x=275, y=174)
     Frame(window, width=4, height=42, bg="white").place(x=275, y=174)
     Frame(window, width=4, height=42, bg="white").place(x=620, y=174)
@@ -73,7 +79,7 @@ def createdatabase():
                            6, 7, 8, 9, 10)
     feildsize.config(bg="#6C63FF")
     feildsize.pack(ipadx=50, ipady=10)
-    nextbtn = Button(window, command=window.destroy, height=40, width=200,
+    nextbtn = Button(window, command=nextdone, height=40, width=200,
                      text="Next", font=("Helvetica", 20, "bold"), fg="#6C63FF", bg="white")
     nextbtn.bind("<Enter>", nextbtnhoveron)
     nextbtn.bind("<Leave>", nextbtnhoveroff)
