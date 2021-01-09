@@ -1,5 +1,6 @@
 import mysql.connector as myconc
-sq=myconc.connect(host='localhost',user='root',password="rithul",database="codeesa")
+sq = myconc.connect(host='localhost', user='root',
+                    password="bezlin2003")
 if sq.is_connected():
     print("connected")
-sqc=sq.cursor()
+sqc = sq.cursor()
