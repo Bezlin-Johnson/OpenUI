@@ -66,8 +66,6 @@ def previewdatabase():
 
 
 window = tk.Tk()
-window.title("Choose a template")
-window.config(bg="black")
 img0 = ImageTk.PhotoImage(Image.open("bg0.png"))
 img1 = ImageTk.PhotoImage(Image.open("bg1.png"))
 img2 = ImageTk.PhotoImage(Image.open("bg2.png"))
