@@ -66,6 +66,7 @@ def previewdatabase():
 
 
 window = tk.Tk()
+window.title("OpenUI")
 img0 = ImageTk.PhotoImage(Image.open("bg0.png"))
 img1 = ImageTk.PhotoImage(Image.open("bg1.png"))
 img2 = ImageTk.PhotoImage(Image.open("bg2.png"))
@@ -74,7 +75,7 @@ img4 = ImageTk.PhotoImage(Image.open("bg4.png"))
 img5 = ImageTk.PhotoImage(Image.open("bg5.png"))
 img6 = ImageTk.PhotoImage(Image.open("bg6.png"))
 Label(window, image=img0).place(x=-2, y=-1)
-window.overrideredirect(True)
+window.resizable(False, False)
 x_cordinate = int((window.winfo_screenwidth()/2) - (450))
 y_cordinate = int((window.winfo_screenheight()/2) - (350))
 window.geometry("{}x{}+{}+{}".format(900, 700, x_cordinate, y_cordinate))
@@ -87,9 +88,9 @@ Frame(window, width=150, height=4, bg="#6C63FF").place(x=20, y=640)
 Frame(window, width=150, height=4, bg="#6C63FF").place(x=20, y=676)
 Frame(window, width=4, height=40, bg="#6C63FF").place(x=20, y=640)
 Frame(window, width=4, height=40, bg="#6C63FF").place(x=166, y=640)
-Label(window, text=" ",
-      bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
-Label(window, text="Chose what you want to do First.",
+Frame(window, width=900, height=10,
+      bg="#e8e6e9").pack()
+Label(window, text="Stylish UI from the future for your Database",
       bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
 createbtn = Button(window, command=createdatabase,
                    width=280, height=220, image=img1)
