@@ -58,11 +58,30 @@ def createdatabase():
                     errr.config(bg="red", text="A Database with name- '" +
                                 name+"' already exists.")
                 else:
-                    if connect.tableexistcheck(tname) == True:
+                    connect.createdatabase(name)
+                    if connect.tableexistcheck(tname, name) == True:
                         errr.config(bg="red", text="A Table with name- '" +
                                     tname+"' already exists.")
                     else:
-                        print("All set")
+                        def exitbtnhoveron(event):
+                            exitbtn.configure(bg="white", fg="#6C63FF")
+
+                        def exitbtnhoveroff(event):
+                            exitbtn.configure(fg="white", bg="#6C63FF")
+                        Label(window, image=img7).place(x=-2, y=-1)
+                        exitbtn = Button(window, command=window.destroy, height=40, width=150,
+                                         text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
+                        exitbtn.bind("<Enter>", exitbtnhoveron)
+                        exitbtn.bind("<Leave>", exitbtnhoveroff)
+                        exitbtn.place(x=5, y=655)
+                        Frame(window, width=150, height=4,
+                              bg="#6C63FF").place(x=5, y=655)
+                        Frame(window, width=150, height=4,
+                              bg="#6C63FF").place(x=5, y=691)
+                        Frame(window, width=4, height=40,
+                              bg="#6C63FF").place(x=5, y=655)
+                        Frame(window, width=4, height=40,
+                              bg="#6C63FF").place(x=151, y=655)
     Label(window, image=img5).place(x=-2, y=-1)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
@@ -146,6 +165,7 @@ img3 = ImageTk.PhotoImage(Image.open("bg3.png"))
 img4 = ImageTk.PhotoImage(Image.open("bg4.png"))
 img5 = ImageTk.PhotoImage(Image.open("bg5.png"))
 img6 = ImageTk.PhotoImage(Image.open("bg6.png"))
+img7 = ImageTk.PhotoImage(Image.open("bg7.png"))
 Label(window, image=img0).place(x=-2, y=-1)
 window.resizable(False, False)
 x_cordinate = int((window.winfo_screenwidth()/2) - (450))
