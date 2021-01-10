@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import *
 from tkmacosx import *
 from PIL import ImageTk, Image
-import mysql.connector as myconc
 import time
 import connect
 
@@ -46,11 +45,24 @@ def createdatabase():
 
     def nextdone():
         name = databasename.get()
+        tname = tablename.get()
         if len(name) < 1:
-            errr.config(text="Table name is required.", bg="red")
-        if connect.databaseexistcheck(name) == True:
-            errr.config(bg="red", text="A table with name-" +
-                        name+"already exists.")
+            errr.config(
+                text="Database name is required.", bg="red")
+        else:
+            if len(tname) < 1:
+                errr.config(
+                    text="Table name is required.", bg="red")
+            else:
+                if connect.databaseexistcheck(name) == True:
+                    errr.config(bg="red", text="A Database with name- '" +
+                                name+"' already exists.")
+                else:
+                    if connect.tableexistcheck(tname) == True:
+                        errr.config(bg="red", text="A Table with name- '" +
+                                    tname+"' already exists.")
+                    else:
+                        print("All set")
     Label(window, image=img5).place(x=-2, y=-1)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
@@ -103,8 +115,8 @@ def createdatabase():
     Frame(window, width=4, height=39, bg="white").place(x=546, y=505)
     Frame(window, width=200, height=4, bg="white").place(x=350, y=541)
     errr = Label(window, text="",
-                 bg="white", font=("Helvetica", 20, "bold"))
-    errr.pack(pady=100, ipadx=10)
+                 bg="white", font=("Helvetica", 12, "bold"))
+    errr.pack()
 
 
 def previewdatabase():
