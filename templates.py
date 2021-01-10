@@ -2,7 +2,9 @@ import tkinter as tk
 from tkinter import *
 from tkmacosx import *
 from PIL import ImageTk, Image
+import mysql.connector as myconc
 import time
+import connect
 
 
 def exitbtnhoveron(event):
@@ -43,9 +45,12 @@ def createdatabase():
         nextbtn.configure(fg="#6C63FF")
 
     def nextdone():
-        name = str(tablename.get())
-        print(name.len)
-        # print(variable.get(), tablename.get())
+        name = databasename.get()
+        if len(name) < 1:
+            errr.config(text="Table name is required.", bg="red")
+        if connect.databaseexistcheck(name) == True:
+            errr.config(bg="red", text="A table with name-" +
+                        name+"already exists.")
     Label(window, image=img5).place(x=-2, y=-1)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
@@ -56,19 +61,28 @@ def createdatabase():
     Frame(window, width=150, height=4, bg="#6C63FF").place(x=5, y=691)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=5, y=655)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=151, y=655)
-    Label(window, text="Provide a name for your table.",
+    Label(window, text="Provide a name for your Database.",
           bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
     Label(window, text="",
           bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
-    tablename = tk.Entry(window, justify='center', bd=3, fg="black",
-                         font=("Helvetica", 30, "bold"))
-    tablename.pack()
+    databasename = tk.Entry(window, justify='center', bd=3, fg="black",
+                            font=("Helvetica", 30, "bold"))
+    databasename.pack()
     Frame(window, width=350, height=4, bg="white").place(x=275, y=174)
     Frame(window, width=4, height=42, bg="white").place(x=275, y=174)
     Frame(window, width=4, height=42, bg="white").place(x=620, y=174)
-    Frame(window, width=350, height=3, bg="black").place(x=275, y=215)
+    Frame(window, width=350, height=3, bg="black").place(x=275, y=216)
     Label(window, text="",
           bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
+    Label(window, text="Give a name to your table",
+          bg="#e8e6e9", font=("Helvetica", 20, "bold")).pack()
+    tablename = tk.Entry(window, justify='center', bd=3, fg="black",
+                         font=("Helvetica", 30, "bold"))
+    tablename.pack()
+    Frame(window, width=350, height=4, bg="white").place(x=275, y=308)
+    Frame(window, width=4, height=42, bg="white").place(x=275, y=308)
+    Frame(window, width=4, height=42, bg="white").place(x=620, y=308)
+    Frame(window, width=350, height=3, bg="black").place(x=275, y=350)
     Label(window, text="How many feilds do you need for your table.",
           bg="#e8e6e9", font=("Helvetica", 20, "bold")).pack()
     Label(window, text="",
@@ -83,11 +97,14 @@ def createdatabase():
                      text="Next", font=("Helvetica", 20, "bold"), fg="#6C63FF", bg="white")
     nextbtn.bind("<Enter>", nextbtnhoveron)
     nextbtn.bind("<Leave>", nextbtnhoveroff)
-    nextbtn.pack(pady=100)
+    nextbtn.place(x=350, y=505)
     Frame(window, width=200, height=4, bg="white").place(x=350, y=505)
     Frame(window, width=4, height=40, bg="white").place(x=350, y=504)
-    Frame(window, width=4, height=39, bg="white").place(x=545, y=505)
-    Frame(window, width=200, height=4, bg="white").place(x=350, y=540)
+    Frame(window, width=4, height=39, bg="white").place(x=546, y=505)
+    Frame(window, width=200, height=4, bg="white").place(x=350, y=541)
+    errr = Label(window, text="",
+                 bg="white", font=("Helvetica", 20, "bold"))
+    errr.pack(pady=100, padx=10)
 
 
 def previewdatabase():
