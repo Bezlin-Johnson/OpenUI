@@ -104,7 +104,7 @@ def createdatabase():
     Frame(window, width=200, height=4, bg="white").place(x=350, y=541)
     errr = Label(window, text="",
                  bg="white", font=("Helvetica", 20, "bold"))
-    errr.pack(pady=100, padx=10)
+    errr.pack(pady=100, ipadx=10)
 
 
 def previewdatabase():
