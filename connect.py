@@ -33,6 +33,10 @@ def createdatabase(name):
         cursor.execute(cursor.execute("CREATE DATABASE "+name))
 
 
+def createdbs(name):
+    if sq.is_connected():
+        print("Succefully connects.")
+
 # def createtable(name, database):
 #     if sq.is_connected():
 #         cursor = sq.cursor()

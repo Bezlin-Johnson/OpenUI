@@ -63,12 +63,30 @@ def createdatabase():
                         errr.config(bg="red", text="A Table with name- '" +
                                     tname+"' already exists.")
                     else:
+                        def create():
+                            print("variable"+str(0).get())
+
                         def exitbtnhoveron(event):
                             exitbtn.configure(bg="white", fg="#6C63FF")
 
                         def exitbtnhoveroff(event):
                             exitbtn.configure(fg="white", bg="#6C63FF")
                         Label(window, image=img7).place(x=-2, y=-1)
+                        if int(variable.get()) == 1:
+                            Label(window, text="What you would like to call this feild?",
+                                  bg="#e8e6e9", font=("Helvetica", 18, "bold")).place(x=280, y=300)
+                            variable = StringVar(window)
+                            variable.set("String")
+                            feildsize = OptionMenu(
+                                window, variable, "String", "Integer", "date", "Primary key")
+                            feildsize.config(bg="#6C63FF")
+                            feildsize.place(x=520, y=300+32)
+                            raw = tk.Entry(window, justify='center', bd=0, fg="black",
+                                           font=("Helvetica", 18, "bold"))
+                            raw.place(x=280, y=300+30)
+                            Frame(window, width=228, height=4,
+                                  bg="black").place(x=280, y=300+55)
+
                         exitbtn = Button(window, command=window.destroy, height=40, width=150,
                                          text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
                         exitbtn.bind("<Enter>", exitbtnhoveron)
@@ -82,6 +100,11 @@ def createdatabase():
                               bg="#6C63FF").place(x=5, y=655)
                         Frame(window, width=4, height=40,
                               bg="#6C63FF").place(x=151, y=655)
+                        nextbtn = Button(window, command=create, height=40, width=200,
+                                         text="Create", font=("Helvetica", 20, "bold"), fg="#6C63FF", bg="white")
+                        nextbtn.bind("<Enter>", nextbtnhoveron)
+                        nextbtn.bind("<Leave>", nextbtnhoveroff)
+                        nextbtn.place(x=695, y=655)
     Label(window, image=img5).place(x=-2, y=-1)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
@@ -139,12 +162,17 @@ def createdatabase():
 
 
 def previewdatabase():
+    def box():
+        Frame(window, width=150, height=30, bg="black", bd=2).pack()
+
     def exitbtnhoveron(event):
         exitbtn.configure(bg="white", fg="#6C63FF")
 
     def exitbtnhoveroff(event):
         exitbtn.configure(fg="white", bg="#6C63FF")
     Label(window, image=img6).place(x=-2, y=-1)
+    Label(window, text="Preview of your database.",
+          bg="#e8e6e9", font=("Helvetica", 40, "bold")).place(x=190, y=0)
     exitbtn = Button(window, command=window.destroy, height=40, width=150,
                      text="Exit", font=("Helvetica", 20, "bold"), bg="#6C63FF", fg="white")
     exitbtn.bind("<Enter>", exitbtnhoveron)
@@ -154,6 +182,7 @@ def previewdatabase():
     Frame(window, width=150, height=4, bg="#6C63FF").place(x=5, y=691)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=5, y=655)
     Frame(window, width=4, height=40, bg="#6C63FF").place(x=151, y=655)
+    box()
 
 
 window = tk.Tk()
