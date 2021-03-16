@@ -163,7 +163,7 @@ Frame(window, width=4, height=40, bg="#6C63FF").place(x=166, y=640)
 Frame(window, width=900, height=10,
       bg="#e8e6e9").pack()
 Label(window, text="Stylish UI from the future for your Database",
-      bg="#e8e6e9", font=("Helvetica", 40, "bold")).pack()
+      bg="#e8e6e9", font=("Helvetica", 30, "bold")).pack()
 createbtn = Button(window, command=createdatabase,
                    width=280, height=220, image=img1)
 createbtn.bind("<Enter>", createhoveron)
